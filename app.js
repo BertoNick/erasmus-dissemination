@@ -293,19 +293,23 @@ function initMappaInterattiva(scuole) {
     attribution: '© OpenStreetMap contributors'
   }).addTo(mappaLeaflet);
 
-  // Cicla i dati delle scuole per stampare i marker con i rispettivi loghi
+// Cicla i dati delle scuole per stampare i marker con i rispettivi loghi proporzionali
   scuole.forEach(scuola => {
     if (scuola.coordinate) {
       
-      // Creazione icona personalizzata con il logo della scuola
-      const logoIcon = L.icon({
-        iconUrl: scuola.logo,
-        iconSize: [40, 40],        
-        iconAnchor: [20, 20],      
-        popupAnchor: [0, -20]      
+      // SOLUZIONE LOGHI PROPORZIONALI: 
+      // Blocchiamo l'altezza a 50px e lasciamo la larghezza automatica (auto) per non deformare il logo.
+      const logoIcon = L.divIcon({
+        html: `<div style="background-color: white; border: 2px solid #002654; border-radius: 6px; height: 50px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); padding: 4px; box-sizing: border-box;">
+                 <img src="${scuola.logo}" alt="Logo ${scuola.nome}" style="height: 100%; width: auto; object-fit: contain; display: block;">
+               </div>`,
+        className: '',          // Svuota le classi di default per evitare sfondi di disturbo
+        iconSize: null,         // Rimuovendo il valore fisso, Leaflet permette all'HTML di espandersi in larghezza
+        iconAnchor: [25, 25],   // Ancoraggio centrale approssimativo (metà dell'altezza di 50px)
+        popupAnchor: [0, -25]   // Aggancia il fumetto informativo appena sopra il logo
       });
 
-      // Crea il marker e lo aggancia a mappaLeaflet
+      // Crea il marker usando l'icona proporzionale
       const marker = L.marker([scuola.coordinate.lat, scuola.coordinate.lng], { icon: logoIcon }).addTo(mappaLeaflet);
       
       // Contenuto del popup al clic sul logo
@@ -319,4 +323,3 @@ function initMappaInterattiva(scuole) {
       marker.bindPopup(popupContent);
     }
   });
-}
