@@ -730,7 +730,7 @@ main {
   display: block !important;    /* Forza il browser a calcolarlo come un blocco solido */
   position: relative !important; /* Permette alle immagini delle strade di ancorarsi geometricamente */
   width: 100% !important;        /* Prende tutta la larghezza del wrapper */
-  height: 450px !important;      /* Forziamo l'altezza fissa direttamente nel CSS, superando conflitti HTML */
+  height: 550px !important;      /* Forziamo l'altezza fissa direttamente nel CSS, superando conflitti HTML */
   z-index: 1;                    /* Impedisce alla mappa di coprire menu o skip link */
   
   /* Risolve un bug visivo raro di Leaflet che spezza le immagini quando si usano transizioni SPA */
