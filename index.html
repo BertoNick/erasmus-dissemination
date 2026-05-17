@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erasmus+ Job Shadowing Finlandia | Disseminazione | Liceo Manzoni</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Roboto+Mono:wght@400;500&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
+
+  <header class="it-header">
+    <div class="it-header-slim">
+      <div class="container">
+        <div class="slim-content">
+          <span>Unione Europea || Programma <strong>Erasmus+</strong></span>
+          <span class="year-badge">Marzo 2026</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="it-header-center">
+      <div class="container header-core">
+        <div class="brand-wrapper">
+          
+          <div class="logos">
+            <img src="assets/icons/logo-manzoni.png" 
+                 alt="LM" 
+                 class="header-logo">
+                 
+            <img src="assets/icons/logo-erasmus.jpg" 
+                 alt="Erasmus+" 
+                 class="header-logo">
+
+            <img src="assets/icons/logo-leppavaaran_lukio.png" 
+                 alt="Leppävaaran lukio" 
+                 class="header-logo">
+          </div> 
+          
+          <div class="text-brand">
+            <h1 id="site-title"></h1>
+            <p id="site-subtitle"></p>
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+
+    <nav class="it-navbar" aria-label="Menu principale">
+      <div class="container">
+        <ul class="nav-menu" role="tablist">
+          <li role="presentation">
+            <button id="tab-home" class="nav-link active" role="tab" aria-selected="true" aria-controls="panel-home">
+              HOME
+            </button>
+          </li>
+          <li role="presentation">
+            <button id="tab-didattica" class="nav-link" role="tab" aria-selected="false" aria-controls="panel-didattica" tabindex="-1">
+              DIDATTICA & METODOLOGIA
+            </button>
+          </li>
+          <li role="presentation">
+            <button id="tab-diario" class="nav-link" role="tab" aria-selected="false" aria-controls="panel-diario" tabindex="-1">
+              DIARIO DI BORDO
+            </button>
+          </li>
+          <li role="presentation">
+            <button id="tab-iter" class="nav-link" role="tab" aria-selected="false" aria-controls="panel-iter" tabindex="-1">
+              ITER AMMINISTRATIVO
+            </button>
+          </li>
+          <li role="presentation">
+            <button id="tab-partenariati" class="nav-link" role="tab" aria-selected="false" aria-controls="panel-partenariati" tabindex="-1">
+              PARTENARIATI
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <div class="container">
+      
+      <section id="panel-home" class="tab-panel active" role="tabpanel" aria-labelledby="tab-home">
+        <div class="hero-card animate-fade">
+          <h2>Il Progetto in sintesi</h2>
+          <p class="narrative-text" id="home-intro-text"></p>
+          <div class="meta-info-grid">
+            <div class="meta-item">
+              <strong>Scuola:</strong> <span id="meta-scuola"></span>
+            </div>
+            <div class="meta-item">
+              <strong>Periodo:</strong> <span id="meta-periodo"></span>
+            </div>
+            <div class="meta-item">
+              <strong>Destinazione:</strong> <span id="meta-destinazione"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="panel-didattica" class="tab-panel" role="tabpanel" aria-labelledby="tab-didattica" hidden>
+        <div class="animate-fade">
+          <div class="grid-two-cols">
+            <div>
+              <h2 id="didattica-titolo"></h2>
+              <p class="narrative-text" id="didattica-intro"></p>
+              <h3>Caratteristiche chiave osservate:</h3>
+              <ul class="styled-list" id="didattica-lista-metodi"></ul>
+            </div>
+            <div class="flex-center">
+              <figure class="image-wrapper">
+                <img id="didattica-grafico" src="" alt="Grafico comparativo dei tempi scolastici e del benessere dello studente.">
+                <figcaption>Fig 1. Strutturazione del tempo scuola ed approccio olistico.</figcaption>
+              </figure>
+            </div>
+          </div>
+          
+          <div class="comparison-docs-section" id="didattica-confronto-container">
+            </div>
+        </div>
+      </section>
+
+      <section id="panel-diario" class="tab-panel" role="tabpanel" aria-labelledby="tab-diario" hidden>
+        <div class="animate-fade">
+          <h2>Diario di bordo</h2>
+          <p class="intro-section-text">Cosa abbiamo fatto in pratica? Cronaca day-by-day dell'esperienza sul campo.</p>
+          
+          <div class="timeline-cards-vertical" id="diario-cards-container">
+            </div>
+        </div>
+      </section>
+
+      <section id="panel-iter" class="tab-panel" role="tabpanel" aria-labelledby="tab-iter" hidden>
+        <div class="animate-fade">
+          <h2 id="iter-titolo"></h2>
+          <p class="intro-section-text" id="iter-descrizione"></p>
+          
+          <div class="vertical-timeline" id="iter-timeline-container">
+            </div>
+        </div>
+      </section>
+
+      <section id="panel-partenariati" class="tab-panel" role="tabpanel" aria-labelledby="tab-partenariati" hidden>
+        <div class="animate-fade">
+          <h2 id="partenariati-titolo"></h2>
+          <p class="intro-section-text" id="partenariati-descrizione"></p>
+          
+          <div class="partners-list" id="partenariati-scuole-container">
+            </div>
+          
+          <div class="map-section-wrapper">
+            <h3>Mappa interattiva dei partner 2025/26</h3>
+            <div id="map" style="height: 450px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="it-footer">
+    <div class="container footer-content">
+      <div class="footer-links">
+        
+        <div class="footer-block-left">
+          <p>
+            Questo sito è un'applicazione web indipendente sviluppata a scopo documentale e informativo sul progetto Erasmus+ svolto dal <strong>Liceo Manzoni di Varese</strong>. L'applicazione <strong>non</strong> costituisce il canale di comunicazione ufficiale dell'istituto; i contenuti e le opinioni espresse sono di esclusiva responsabilità dell'autore. 
+          </p>
+        </div>
+        
+        <div class="footer-block-right">
+          <p>
+            Il progetto Erasmus+ è cofinanziato dall'Unione Europea. La Commissione Europea non è responsabile dell'uso che può essere fatto delle informazioni qui contenute.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
