@@ -868,7 +868,8 @@ main {
   }
 
   /* Rendiamo i bottoni del menu larghi al 100% e ben distanziati su Mobile */
-  width: 100%;
+  .nav-menu [role="tab"] {
+    width: 100%;
     text-align: center;
     padding: 1rem;
     margin: 0;
@@ -886,5 +887,45 @@ main {
   
   .nav-menu [role="tab"]:last-child {
     border-bottom: none;
+  }
+  /* Ottimizzazione Layout Loghi Intestazione Mobile */
+  .brand-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  /* Forza il logo Erasmus a stare sopra occupando tutta la larghezza */
+  .logo-erasmus-wrapper {
+    order: 1;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.2rem;
+  }
+
+  .logo-erasmus {
+    height: 48px; /* Leggermente ridotto per mobile */
+  }
+
+  /* Dispone i loghi delle scuole affiancati sotto */
+  .logos .logo-link:not(.logo-erasmus-wrapper) {
+    order: 2;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo-school-1, .logo-school-2 {
+    height: 42px; /* Ridotti per non rubare spazio */
   }
 }
