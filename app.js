@@ -53,9 +53,40 @@ function initDataInjection() {
   const didatticaIntro = document.getElementById("didattica-intro");
   if (didatticaIntro) didatticaIntro.textContent = data.didattica.introduzione;
 
-  const didatticaGrafico = document.getElementById("didattica-grafico");
-  if (didatticaGrafico && typeof ASSETS_REGISTRY !== 'undefined') {
-    didatticaGrafico.src = ASSETS_REGISTRY.images.graficoDidattica;
+  // Blocco dinamico per il Carosello Didattica
+  const didatticaMediaContainer = document.getElementById("didattica-media-container");
+  if (didatticaMediaContainer && typeof ASSETS_REGISTRY !== 'undefined') {
+    const fotoDidattica = ASSETS_REGISTRY.images.immaginiDidattica;
+    let htmlContent = '';
+
+    if (fotoDidattica && fotoDidattica.length > 0) {
+      if (fotoDidattica.length === 1) {
+        htmlContent = `
+          <figure class="image-wrapper">
+            <img src="${fotoDidattica[0]}" alt="Grafico didattica" class="diario-img">
+            <figcaption>Fig 1. Strutturazione del tempo scuola ed approccio olistico.</figcaption>
+          </figure>`;
+      } else {
+        htmlContent = `
+          <div class="diario-carousel" data-current="0">
+            <div class="carousel-track">
+              ${fotoDidattica.map((img, idx) => `
+                <img src="${img}" alt="Didattica - Foto ${idx + 1}" class="carousel-img ${idx === 0 ? 'active' : ''}" style="${idx !== 0 ? 'display:none;' : ''}">
+              `).join("")}
+            </div>
+            <div class="carousel-controls">
+              <button type="button" class="btn-carousel-prev" aria-label="Immagine precedente">◀</button>
+              <span class="carousel-indicator">1 / ${fotoDidattica.length}</span>
+              <button type="button" class="btn-carousel-next" aria-label="Immagine successiva">▶</button>
+            </div>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); text-align: center; margin-top: 0.5rem; font-style: italic;">
+            Fig 1. Galleria immagini: Ambienti di apprendimento e modelli orari.
+          </p>
+        `;
+      }
+    }
+    didatticaMediaContainer.innerHTML = htmlContent;
   }
 
   const listaMetodi = document.getElementById("didattica-lista-metodi");
@@ -146,19 +177,6 @@ function initDataInjection() {
           </article>
         `;
       }).join("");
-
-    // Attiva i motori di ascolto click per i pulsanti dei caroselli
-    initCarouselListeners();
-    // Forza la conversione dei simboli LaTeX in formule matematiche/chimiche grafiche
-    if (typeof renderMathInElement !== 'undefined') {
-      renderMathInElement(diarioContainer, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ],
-        throwOnError: false
-      });
-    }
   }
 
   // ==========================================
@@ -239,10 +257,41 @@ function initDataInjection() {
         </div>
       `).join("");
   }
+
+  // ==========================================
+  // AZIONI POST-INIEZIONE (Caroselli e KaTeX)
+  // ==========================================
+  
+  // 1. Attiva l'ascolto dei click su tutti i caroselli generati (Didattica + Diario)
+  initCarouselListeners();
+
+  // 2. Forza la conversione dei simboli LaTeX in formule matematiche/chimiche
+  if (typeof renderMathInElement !== 'undefined') {
+    const configurazioneKatex = {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ],
+      throwOnError: false
+    };
+
+    // Scansiona il contenitore del diario
+    if (diarioContainer) {
+      renderMathInElement(diarioContainer, configurazioneKatex);
+    }
+    // Scansiona il contenitore della didattica (in caso di formule presenti nelle introduzioni o didascalie)
+    if (didatticaMediaContainer) {
+      renderMathInElement(didatticaMediaContainer, configurazioneKatex);
+    }
+    const didatticaIntroEl = document.getElementById("didattica-intro");
+    if (didatticaIntroEl) {
+      renderMathInElement(didatticaIntroEl, configurazioneKatex);
+    }
+  }
 }
 
 /**
- * Gestisce lo scorrimento delle immagini nei caroselli del Diario di Bordo
+ * Gestisce lo scorrimento delle immagini nei caroselli del Diario di Bordo e della Didattica
  */
 function initCarouselListeners() {
   document.querySelectorAll('.diario-carousel').forEach(carousel => {
@@ -442,6 +491,12 @@ function initMappaInterattiva(scuole) {
 /**
  * Gestisce l'apertura e la chiusura della tendina del menu su dispositivi Mobile
  */
+function menuToggleAction(navTabs, menuToggle) {
+  const isOpen = navTabs.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", isOpen);
+  menuToggle.innerHTML = isOpen ? '<span class="hamburger-icon" aria-hidden="true">✖</span>' : '<span class="hamburger-icon" aria-hidden="true">☰</span>';
+}
+
 function initMobileMenu() {
   const menuToggle = document.getElementById("menu-toggle");
   const navTabs = document.getElementById("nav-tabs");
@@ -451,9 +506,7 @@ function initMobileMenu() {
   // 1. Click sul pulsante Hamburger: attiva/disattiva la classe .open
   menuToggle.addEventListener("click", (e) => {
     e.stopPropagation();
-    const isOpen = navTabs.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", isOpen);
-    menuToggle.innerHTML = isOpen ? '<span class="hamburger-icon" aria-hidden="true">✖</span>' : '<span class="hamburger-icon" aria-hidden="true">☰</span>';
+    menuToggleAction(navTabs, menuToggle);
   });
 
   // 2. Chiusura automatica a selezione avvenuta
@@ -471,9 +524,11 @@ function initMobileMenu() {
   // 3. Chiusura resiliente se l'utente clicca un'area esterna della pagina
   document.addEventListener("click", (e) => {
     if (!navTabs.contains(e.target) && !menuToggle.contains(e.target)) {
-      navTabs.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.innerHTML = '<span class="hamburger-icon" aria-hidden="true">☰</span>';
+      if (navTabs.classList.contains("open")) {
+        navTabs.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<span class="hamburger-icon" aria-hidden="true">☰</span>';
+      }
     }
   });
 }
