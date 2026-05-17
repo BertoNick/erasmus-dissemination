@@ -284,7 +284,7 @@ function initIterAccordion() {
 function initMappaInterattiva(scuole) {
   if (!document.getElementById('map')) return;
 
-  // FIX DEFINITIVO: Assegniamo l'istanza alla variabile globale mappaLeaflet
+  // Assegniamo l'istanza alla variabile globale mappaLeaflet
   mappaLeaflet = L.map('map').setView([50.0, 4.0], 4);
 
   // Carica i tasselli OpenStreetMap
@@ -293,7 +293,7 @@ function initMappaInterattiva(scuole) {
     attribution: '© OpenStreetMap contributors'
   }).addTo(mappaLeaflet);
 
-// Cicla i dati delle scuole per stampare i marker con i rispettivi loghi proporzionali
+  // Cicla i dati delle scuole per stampare i marker con i rispettivi loghi proporzionali
   scuole.forEach(scuola => {
     if (scuola.coordinate) {
       
@@ -310,7 +310,7 @@ function initMappaInterattiva(scuole) {
       });
 
       // Crea il marker usando l'icona proporzionale
-      const marker = L.marker([scuola.coordinate.lat, scuola.coordinate.lng], { icon: logoIcon }).addTo(mappaLeaflet);
+      const marker = L.marker([scuola.coordinate.lat, schoola => scuola.coordinate.lat ? [scuola.coordinate.lat, scuola.coordinate.lng] : [0,0]][0] ? [scuola.coordinate.lat, scuola.coordinate.lng] : [50, 4], { icon: logoIcon }).addTo(mappaLeaflet);
       
       // Contenuto del popup al clic sul logo
       const popupContent = `
@@ -323,3 +323,4 @@ function initMappaInterattiva(scuole) {
       marker.bindPopup(popupContent);
     }
   });
+}
