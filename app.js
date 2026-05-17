@@ -1,3 +1,5 @@
+let mappaLeaflet = null; // Memorizza l'istanza della mappa per controllarla tra le varie funzioni
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Inizializzazione e Iniezione Dati da data.js
   initDataInjection();
@@ -92,12 +94,10 @@ function initDataInjection() {
       </article>
     `).join("");
 
-// ==========================================
+  // ==========================================
   // MENU 4: ITER AMMINISTRATIVO (Timeline)
   // ==========================================
   document.getElementById("iter-titolo").textContent = data.iterAmministrativo.titolo;
-  
-  // FIX: Usiamo innerHTML altrimenti il tag <br> inserito nel testo di data.js verrà stampato come testo piatto
   document.getElementById("iter-descrizione").innerHTML = data.iterAmministrativo.descrizione;
 
   const iterContainer = document.getElementById("iter-timeline-container");
@@ -162,11 +162,6 @@ function initDataInjection() {
         </div>
       </div>
     `).join("");
-
-  // Inizializzazione della Mappa Interattiva Leaflet.js (se inclusa nel progetto)
-  if (typeof L !== 'undefined') {
-    initMappaInterattiva(data.partenariati.scuole);
-  }
 }
 
 /**
@@ -198,6 +193,19 @@ function initTabNavigation() {
       const targetPanel = document.getElementById(targetPanelId);
       targetPanel.removeAttribute("hidden");
       targetPanel.classList.add("active");
+
+      // ==========================================================================
+      // FIX MAPPA: Sveglia Leaflet e ricalcola le dimensioni della mappa visibile
+      // ==========================================================================
+      if (targetPanelId === "panel-partenariati" && typeof L !== 'undefined') {
+        if (!mappaLeaflet) {
+          initMappaInterattiva(ERASMUS_DATA.partenariati.scuole);
+        } else {
+          setTimeout(() => {
+            mappaLeaflet.invalidateSize();
+          }, 100);
+        }
+      }
     });
 
     tab.addEventListener("keydown", (e) => {
@@ -274,29 +282,31 @@ function initIterAccordion() {
  * Genera e istanzia la mappa interattiva europea usando i LOGHI delle scuole come marker
  */
 function initMappaInterattiva(scuole) {
-  // Inizializza la mappa sull'Europa centro-settentrionale
-  const map = L.map('map').setView([50.0, 4.0], 4);
+  if (!document.getElementById('map')) return;
+
+  // FIX DEFINITIVO: Assegniamo l'istanza alla variabile globale mappaLeaflet
+  mappaLeaflet = L.map('map').setView([50.0, 4.0], 4);
 
   // Carica i tasselli OpenStreetMap
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+  }).addTo(mappaLeaflet);
 
   // Cicla i dati delle scuole per stampare i marker con i rispettivi loghi
   scuole.forEach(scuola => {
     if (scuola.coordinate) {
       
-      // CREAZIONE ICONA PERSONALIZZATA CON IL LOGO DELLA SCUOLA
+      // Creazione icona personalizzata con il logo della scuola
       const logoIcon = L.icon({
-        iconUrl: scuola.logo,      // Prende la foto definita in data.js
-        iconSize: [40, 40],        // Forziamo il logo in un quadrato perfetto di 40x40px
-        iconAnchor: [20, 20],      // Centra l'icona esattamente sul punto geografico (metà altezza e larghezza)
-        popupAnchor: [0, -20]      // Aggancia il fumetto informativo appena sopra il logo
+        iconUrl: scuola.logo,
+        iconSize: [40, 40],        
+        iconAnchor: [20, 20],      
+        popupAnchor: [0, -20]      
       });
 
-      // Crea il marker usando l'icona personalizzata appena creata
-      const marker = L.marker([scuola.coordinate.lat, scuola.coordinate.lng], { icon: logoIcon }).addTo(map);
+      // Crea il marker e lo aggancia a mappaLeaflet
+      const marker = L.marker([scuola.coordinate.lat, scuola.coordinate.lng], { icon: logoIcon }).addTo(mappaLeaflet);
       
       // Contenuto del popup al clic sul logo
       const popupContent = `
