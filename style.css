@@ -852,15 +852,13 @@ main {
     display: none; /* Nascondiamo la lista di default */
     flex-direction: column;
     width: 100%;
-    background: var(--bg-alternate, #f4f6f9);
-    border: 1px solid var(--border-color, #dcdcdc);
-    border-radius: 6px;
-    padding: 0.5rem;
+    background: var(--primary-brand); /* Colore rosso amaranto istituzionale */
+    border: none;
+    border-radius: 0 0 6px 6px; /* Smussatura solo sugli angoli inferiori */
+    padding: 0.5rem 0;
     box-sizing: border-box;
-    position: absolute;
-    top: 100%; /* Si posiziona perfettamente sotto il pulsante */
-    left: 0;
-    z-index: 100; /* Sta sopra al contenuto della pagina */
+    position: static; /* Rimuove il posizionamento assoluto fluttuante */
+    z-index: 100;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
@@ -870,15 +868,23 @@ main {
   }
 
   /* Rendiamo i bottoni del menu larghi al 100% e ben distanziati su Mobile */
-  .nav-menu [role="tab"] {
-    width: 100%;
+  width: 100%;
     text-align: center;
     padding: 1rem;
-    margin: 0.2rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    margin: 0;
+    background: transparent;
+    color: #FFFFFF;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separatore leggero chiaro */
+  }
+
+  .nav-menu [role="tab"]:hover,
+  .nav-menu [role="tab"].active {
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom-color: var(--accent-eu-gold);
   }
   
-  .nav.menu [role="tab"]:last-child {
+  .nav-menu [role="tab"]:last-child {
     border-bottom: none;
   }
 }

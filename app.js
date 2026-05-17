@@ -312,7 +312,7 @@ function initMappaInterattiva(scuole) {
       });
 
       // Crea il marker usando l'icona proporzionale
-      const marker = L.marker([scuola.coordinate.lat, schoola => scuola.coordinate.lat ? [scuola.coordinate.lat, scuola.coordinate.lng] : [0,0]][0] ? [scuola.coordinate.lat, scuola.coordinate.lng] : [50, 4], { icon: logoIcon }).addTo(mappaLeaflet);
+      const marker = L.marker([scuola.coordinate.lat, scuola.coordinate.lng], { icon: logoIcon }).addTo(mappaLeaflet);
       
       // Contenuto del popup al clic sul logo
       const popupContent = `
