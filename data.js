@@ -81,19 +81,59 @@ const ERASMUS_DATA = {
   diarioBordo: [
     {
       id: "day1",
-      giorno: "Giorno 1",
-      titolo: "Accoglienza e immersione nella cultura 'Lukio'",
-      anteprima: "Primo impatto con le scuole partner. Lezioni rigorosamente senza scarpe, ampi spazi aperti e un clima di profonda fiducia reciproca...",
-      testoCompleto: "Primo impatto con la scuola Leppävaaran lukio a Espoo. Accolti dalla Dirigente, abbiamo compreso l'organizzazione degli spazi flessibili e assistito alle prime lezioni di lingua e laboratori scientifici, dove gli studenti gestiscono autonomamente i propri moduli di studio tramite la piattaforma digitale in un clima di totale fiducia. Focus speciale sulla sostenibilità: flussi cartacei azzerati grazie alla digitalizzazione.",
-      img: ASSETS_REGISTRY.images.graficoDidattica // Sostituiremo con la foto del Giorno 1 appena la carichi
+      giorno: "01/03/2026",
+      titolo: "Viaggio di andata e arrivo a Helsinki",
+      anteprima: "Partenza da Milano Malpensa e arrivo nella capitale finlandese. Avvio della mobilità transnazionale.",
+      testoCompleto: "<strong>10:55 - VOLO DI ANDATA:</strong> Partenza da <strong>Milano Malpensa (MXP)</strong> con arrivo all'aeroporto di <strong>Helsinki-Vantaa (HEL)</strong> alle ore 15:00.<br><strong>16:30 - TRASFERIMENTO:</strong> Trasferimento dall'aeroporto verso la struttura alberghiera per il <strong>check-in</strong> e la sistemazione.",
+      immagini: []
+    },
+    {
+      id: "day2",
+      giorno: "02/03/2026",
+      titolo: "Didattica digitale, arti musicali e centro storico",
+      anteprima: "Primo impatto con l'insegnamento senza libri cartacei, i laboratori di musica folk e la fisica del moto armonico.",
+      testoCompleto: "<strong>09:45 - INGLESE (Grammatica: countables/uncountables):</strong> Stile di insegnamento classico con un uso intenso della <strong>tecnologia</strong> (<strong>assenza di libri cartacei</strong>, uso esclusivo di laptop). Utilizzo di <strong>Google Classroom</strong> per l'assegnazione di compiti e attività. Gestione della disciplina flessibile mirata all'<strong>autonomia scolastica</strong> e alla responsabilizzazione dello studente.<br><br><strong>11:45 - MUSICA (Cultura musicale finlandese):</strong> Focus sul <strong>ballo di gruppo folk</strong> in tempo 4/4 (passo Base, Crossing e Teardrop). Ascolto, analisi del <em>vibe</em> e degli <strong>strumenti tradizionali</strong> su brani moderni di Vilma Jää, Hohka e Värttinä.<br><br><strong>13:15 - FISICA (Forza elastica ed energia):</strong> Focus sulla <em>Jousivoima</em> (<strong>forza elastica</strong>) e sul <strong>moto armonico</strong>.<br><br><strong>15:30 - ATTIVITÀ CULTURALI:</strong> Visita guidata del centro storico di Helsinki: zona del porto, mercato storico <strong>Vanha kauppahalli</strong>, Cattedrale luterana e Piazza del Senato.",
+      immagini: ["assets/img/musica.jpg"]
     },
     {
       id: "day3",
-      giorno: "Giorno 3",
-      titolo: "Laboratori di Co-progettazione",
-      anteprima: "Sessione di programmazione congiunta sul potenziamento STEM. Abbiamo analizzato come la sostenibilità sia un pilastro di ogni disciplina...",
-      testoCompleto: "Sessione di programmazione congiunta sul potenziamento STEM con i colleghi finlandesi. Abbiamo analizzato come la sostenibilità ambientale non sia considerata una materia a sé stante, ma un pilastro trasversale inserito in ogni disciplina scientifica, supportato da statistiche d'istituto sul tracciamento degli sprechi alimentari nelle mense.",
-      img: ASSETS_REGISTRY.images.graficoDidattica // Sostituiremo con la foto del Giorno 3 appena la carichi
+      giorno: "03/03/2026",
+      titolo: "Inclusione (Special Needs) e tradizione della sauna",
+      anteprima: "Focus sul modello finlandese di supporto per bisogni speciali (Wilma) e chimica quantitativa.",
+      testoCompleto: "<strong>09:45 - CHIMICA:</strong> Spiegazione delle formule per il calcolo del numero di moli $n = \\frac{m}{M}$ e della <strong>concentrazione molare</strong> $C = \\frac{n}{V}$.<br><br><strong>10:30 - SPECIAL NEEDS TEACHER (Inclusione e Supporto):</strong> Analisi del modello aggiornato ad <strong>agosto 2025</strong>. Il <strong>'Supporto Generale'</strong> prevede interventi terapeutici e workshop in <strong>piccoli gruppi (max 10 alunni)</strong>. Nella scuola secondaria (<em>Upper Secondary</em>) sono garantiti workshop di supporto e <strong>didattica speciale</strong>. Lo <strong>screening per la dislessia</strong> è obbligatorio per tutti. Il piano viene redatto <strong>coinvolgendo direttamente lo studente</strong> per definire misure come tempo aggiuntivo, mappe o affiancamento, tracciando tutto sulla piattaforma <strong>Wilma</strong>.<br><br><strong>13:15 - MATEMATICA BASE:</strong> Esercizi sulle conversioni di unità di misura e proprietà geometriche dei poligoni.<br><br><strong>16:00 - ATTIVITÀ CULTURALI:</strong> Esperienza della tradizionale <strong>sauna finlandese</strong>: sessioni a <strong>180°C - 190°C</strong> alternate a immersioni di 2 minuti nelle acque gelide del <strong>Mar Baltico (1°C)</strong>.",
+      immagini: ["assets/img/aula-chimica.jpg", "assets/img/sauna.jpg"]
+    },
+    {
+      id: "day4",
+      giorno: "04/03/2026",
+      titolo: "Laboratori di chimica, strutture Kameleonten e Suomenlinna",
+      anteprima: "Esperimenti di elettrolisi con fenolftaleina, curve di red shift in fisica e carosello sportivo al Kameleonten.",
+      testoCompleto: "<strong>08:15 - CHIMICA LABORATORIO:</strong> Attività pratica (<em>Keratus</em>) con l'utilizzo di $\\text{Na}_2\\text{SO}_4$ e <strong>fenolftaleina</strong> (viraggio al rosa/magenta brillante quando il <strong>pH supera 8.2</strong> intorno al catodo). Relazione redatta direttamente in ambiente <strong>Wilma</strong>.<br><br><strong>09:45 - FISICA:</strong> Lezione sul <strong>Big Bang</strong>, sulla sintesi dei nuclei pesanti e sull'<strong>espansione dell'universo (red shift)</strong>.<br><br><strong>11:45 e 13:15 - EDUCAZIONE FISICA (Kameleonten):</strong> Progettazione di un <strong>percorso di coordinazione</strong> e dinamiche di gruppo presso il centro sportivo. Criteri di valutazione ripartiti equamente in: <strong>1/3 competenze tecniche, 1/3 partecipazione, 1/3 interazione sociale</strong>.<br><br><strong>15:30 - ATTIVITÀ CULTURALI:</strong> Visita alla fortezza <strong>patrimonio UNESCO</strong> di <strong>Suomenlinna</strong> tramite battello tra i ghiacci.<br><br><strong>20:00 - CENA ISTITUZIONALE:</strong> Incontro ufficiale presso il ristorante Kappeli con il <strong>Dirigente scolastico ospitante</strong> per attività di <strong>networking internazionale</strong>.",
+      immagini: ["assets/img/kameleonten-1.jpg", "assets/img/kameleonten-2.jpg", "assets/img/kameleonten-3.jpg", "assets/img/suomenlinna.jpg", "assets/img/kappeli.jpg"]
+    },
+    {
+      id: "day5",
+      giorno: "05/03/2026",
+      titolo: "Sistemi di valutazione, Salute Pubblica e Biblioteca Oodi",
+      anteprima: "Analisi degli esami computer-based (Wilma), introduzione ai vettori con GeoGebra e pausa attiva nelle scienze sanitarie.",
+      testoCompleto: "<strong>08:15 - TEST DI INGLESE:</strong> Esame di produzione scritta <strong>computer-based</strong> (Corso 6) basato su griglie derivate dal <strong>matriculation exam</strong> (esame di maturità). Soglia di sufficienza al <strong>50%</strong>. L'ottimo livello linguistico è favorito dall'<strong>assenza di doppiaggio</strong> nei media.<br><br><strong>09:45 - MATEMATICA AVANZATA:</strong> Analisi dei criteri del Corso 4 (<strong>30% compiti in classe, 20% test intermedi, 50% esame finale</strong>). Studio dei vettori tramite <strong>GeoGebra</strong> con le funzioni $f(x) = x$ e $g(x) = |x|$.<br><br><strong>11:45 - SCIENZE DELLA SALUTE (Health Science):</strong> Analisi del sistema strutturato in <strong>21 regioni socio-sanitarie</strong>. Studio statistico e dei grafici eseguito in piedi come <strong>'pausa attiva'</strong> per stimolare la concentrazione.<br><br><strong>16:30 - ATTIVITÀ CULTURALI:</strong> Itinerario al Monumento a Sibelius, sosta al Café Regatta e studio dei servizi sociali e strutturali della <strong>Biblioteca Centrale Oodi</strong>.",
+      immagini: ["assets/img/sibelius.jpg", "assets/img/regatta.jpg", "assets/img/biblioteca.jpg"]
+    },
+    {
+      id: "day6",
+      giorno: "06/03/2026",
+      titolo: "Successioni economiche, IA applicata e showcase culturale",
+      anteprima: "Compiti di realtà finanziari, composizione musicale assistita da intelligenze artificiali e festival multiculturale.",
+      testoCompleto: "<strong>08:15 - MATEMATICA BASE:</strong> Approccio orientato ai <strong>compiti di realtà</strong> economici: simulazione di un conto con deposito mensile di €200, <strong>tasso di interesse dell'1.5%</strong> e applicazione della <strong>ritenuta fiscale del 30%</strong>.<br><br><strong>11:45 - MUSICA & IA:</strong> Composizione del brano del centenario utilizzando l'<strong>Intelligenza Artificiale</strong> per generare la base, seguita da <strong>riarrangiamento melodico autonomo</strong>.<br><br><strong>13:15 - EVENTI CULTURALI (Edificio 5):</strong> <strong>Showcase multiculturale</strong> interamente guidato e gestito dagli studenti (performance coreane, cinesi, filippine e quiz su <strong>Kahoot</strong>).",
+      immagini: ["assets/img/cultural-event.jpg"]
+    },
+    {
+      id: "day7",
+      giorno: "07/03/2026",
+      titolo: "Spazi antropologici e viaggio di rientro",
+      anteprima: "Studio dei mercati coperti tradizionali, architettura del silenzio a Kamppi e volo per Milano Malpensa.",
+      testoCompleto: "<strong>09:00 - HAKANIEMEN:</strong> Studio dei prodotti locali presso il mercato coperto tradizionale.<br><br><strong>12:00 - KAMPPI:</strong> Visita architettonico-antropologica alla celebre <strong>Cappella del Silenzio</strong>.<br><br><strong>16:05 - VOLO DI RIENTRO:</strong> Partenza da <strong>Helsinki-Vantaa (HEL)</strong> e arrivo a <strong>Milano Malpensa (MXP)</strong>, concludendo la mobilità.",
+      immagini: []
     }
   ],
   

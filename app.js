@@ -77,24 +77,53 @@ function initDataInjection() {
   // ==========================================
   const diarioContainer = document.getElementById("diario-cards-container");
   diarioContainer.innerHTML = data.diarioBordo
-    .map(item => `
-      <article class="diario-card" id="card-${item.id}">
-        <div class="diario-card-header">
-          <span class="diario-tag">${item.giorno}</span>
-          <h4>${item.titolo}</h4>
-        </div>
-        <div class="diario-card-body">
-          <p class="diario-anteprima">${item.anteprima}</p>
-          <div class="diario-content-expanded" hidden>
-            <p class="narrative-text">${item.testoCompleto}</p>
-            ${item.img ? `<img src="${item.img}" alt="${item.titolo}" class="diario-img">` : ''}
+    .map(item => {
+      let mediaHtml = '';
+      
+      if (item.immagini && item.immagini.length > 0) {
+        if (item.immagini.length === 1) {
+          mediaHtml = `<img src="${item.immagini[0]}" alt="${item.titolo}" class="diario-img">`;
+        } else {
+          // Genera la struttura del Carosello Multiplo
+          mediaHtml = `
+            <div class="diario-carousel" data-current="0">
+              <div class="carousel-track">
+                ${item.immagini.map((img, idx) => `
+                  <img src="${img}" alt="${item.titolo} - Foto ${idx + 1}" class="carousel-img ${idx === 0 ? 'active' : ''}" style="${idx !== 0 ? 'display:none;' : ''}">
+                `).join("")}
+              </div>
+              <div class="carousel-controls">
+                <button type="button" class="btn-carousel-prev" aria-label="Immagine precedente">◀</button>
+                <span class="carousel-indicator">1 / ${item.immagini.length}</span>
+                <button type="button" class="btn-carousel-next" aria-label="Immagine successiva">▶</button>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      return `
+        <article class="diario-card" id="card-${item.id}">
+          <div class="diario-card-header">
+            <span class="diario-tag">${item.giorno}</span>
+            <h4>${item.titolo}</h4>
           </div>
-          <button class="btn-toggle-diario" aria-expanded="false" aria-controls="expanded-${item.id}">
-            Leggi tutto <span class="sr-only">il resoconto del ${item.giorno}</span>
-          </button>
-        </div>
-      </article>
-    `).join("");
+          <div class="diario-card-body">
+            <p class="diario-anteprima">${item.anteprima}</p>
+            <div class="diario-content-expanded" hidden>
+              <p class="narrative-text">${item.testoCompleto}</p>
+              ${mediaHtml}
+            </div>
+            <button class="btn-toggle-diario" aria-expanded="false" aria-controls="expanded-${item.id}">
+              Leggi tutto <span class="sr-only">il resoconto del ${item.giorno}</span>
+            </button>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+  // Inizializza i listener per i controlli dei caroselli appena iniettati
+  initCarouselListeners();
 
   // ==========================================
   // MENU 4: ITER AMMINISTRATIVO (Timeline)
