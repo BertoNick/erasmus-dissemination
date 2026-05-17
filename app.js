@@ -149,6 +149,16 @@ function initDataInjection() {
 
     // Attiva i motori di ascolto click per i pulsanti dei caroselli
     initCarouselListeners();
+    // Forza la conversione dei simboli LaTeX in formule matematiche/chimiche grafiche
+    if (typeof renderMathInElement !== 'undefined') {
+      renderMathInElement(diarioContainer, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      });
+    }
   }
 
   // ==========================================
