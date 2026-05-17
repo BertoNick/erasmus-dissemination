@@ -63,9 +63,9 @@ const ERASMUS_DATA = {
     ],
     modelliConfronto: {
       titolo: "Modelli a Confronto",
-      descrizione: "Cliccando sui link sottostanti è possibile consultare i documenti programmatici ufficiali che regolano la didattica in Finlandia e i quadri normativi (Indicazioni Nazionale) dei quattro indirizzi del Liceo Manzoni coinvolti nell'esperienza di Job Shadowing.",
+      descrizione: "Cliccando sui link sottostanti è possibile consultare i documenti programmatici ufficiali che regolano la didattica in Finlandia e la Indicazioni nazionali dei quattro indirizzi del Liceo Manzoni.",
       finlandia: {
-        nome: "National Core Curriculum - Finlandia (High School)",
+        nome: "National core curriculum - Finlandia (inglese)",
         url: ASSETS_REGISTRY.documents.curriculumFinlandia
       },
       italia: [
