@@ -39,8 +39,8 @@ const ERASMUS_DATA = {
   
   // DATI DI INTESTAZIONE GLOBALI
   infoGenerali: {
-    titoloProgetto: "Job Shadowing in Finlandia: Innovazione e Sostenibilità nella Scuola del Futuro",
-    scuola: "ISS Alessandro Manzoni - Varese, Italia",
+    titoloProgetto: "Job shadowing Espoo 2026",
+    scuola: "ISS A. Manzoni - Varese, Italia",
     periodo: "Marzo 2026",
     destinazione: "Leppävaaran lukio - Espoo, Finlandia"
   },

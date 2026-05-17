@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 4. Setup Interattività Timeline Iter Amministrativo (Accordion)
   initIterAccordion();
+
+  initMobileMenu();
 });
 
 /**
@@ -321,6 +323,46 @@ function initMappaInterattiva(scuole) {
         </div>
       `;
       marker.bindPopup(popupContent);
+    }
+  });
+}
+
+/**
+ * Gestisce l'apertura e la chiusura della tendina del menu su dispositivi Mobile
+ */
+function initMobileMenu() {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navTabs = document.getElementById("nav-tabs");
+
+  if (!menuToggle || !navTabs) return;
+
+  // 1. Click sul pulsante Hamburger: Apre/Chiude la tendina
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impedisce al click di propagarsi altrove
+    const isOpen = navTabs.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.innerHTML = isOpen ? '<span class="hamburger-icon" aria-hidden="true">✖</span>' : '<span class="hamburger-icon" aria-hidden="true">☰</span>';
+  });
+
+  // 2. Chiusura automatica quando si clicca su una voce del menu (un Tab)
+  const tabs = navTabs.querySelectorAll('[role="tab"]');
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // Si attiva solo se siamo in modalità mobile (tendina aperta)
+      if (navTabs.classList.contains("open")) {
+        navTabs.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<span class="hamburger-icon" aria-hidden="true">☰</span>';
+      }
+    });
+  });
+
+  // 3. Chiusura di sicurezza se l'utente clicca fuori dal menu
+  document.addEventListener("click", (e) => {
+    if (!navTabs.contains(e.target) && !menuToggle.contains(e.target)) {
+      navTabs.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.innerHTML = '<span class="hamburger-icon" aria-hidden="true">☰</span>';
     }
   });
 }

@@ -116,15 +116,6 @@ input:focus,
   color: var(--accent-eu-gold);
 }
 
-.year-badge {
-  background: var(--accent-eu-gold);
-  color: var(--text-dark);
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-weight: 700;
-}
-
 .it-header-center {
   padding: 1.5rem 0;
   background: var(--bg-main);
@@ -818,4 +809,76 @@ main {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* ==========================================================================
+   9. NUOVO: MENU RESPONSIVE (TENDINA MOBILE)
+   ========================================================================== */
+
+/* Di base (su Desktop), il pulsante hamburger è TOTALMENTE NASCOSTO */
+.menu-toggle-btn {
+  display: none;
+}
+
+/* Regole esclusive per schermi Mobile (sotto i 768px di larghezza) */
+@media (max-width: 768px) {
+  .nav-container {
+    position: relative;
+    width: 100%;
+  }
+
+  /* Mostriamo il pulsante Hamburger su Mobile */
+  .menu-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-brand, #002654);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.6rem 1rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin: 1rem auto; /* Lo centra nella pagina mobile */
+    transition: background 0.2s;
+  }
+
+  .menu-toggle-btn:hover {
+    background: var(--accent-arctic, #004b87);
+  }
+
+  /* Trasformiamo la barra dei Tab in una TENDINA verticale */
+  .nav-menu {
+    display: none; /* Nascondiamo la lista di default */
+    flex-direction: column;
+    width: 100%;
+    background: var(--bg-alternate, #f4f6f9);
+    border: 1px solid var(--border-color, #dcdcdc);
+    border-radius: 6px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%; /* Si posiziona perfettamente sotto il pulsante */
+    left: 0;
+    z-index: 100; /* Sta sopra al contenuto della pagina */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  /* Quando la tendina ha la classe .open, viene MOSTRATA */
+  .nav-menu.open {
+    display: flex;
+  }
+
+  /* Rendiamo i bottoni del menu larghi al 100% e ben distanziati su Mobile */
+  .nav-menu [role="tab"] {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    margin: 0.2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .nav.menu [role="tab"]:last-child {
+    border-bottom: none;
+  }
 }

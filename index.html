@@ -23,7 +23,6 @@
       <div class="container">
         <div class="slim-content">
           <span>Unione Europea || Programma <strong>Erasmus+</strong></span>
-          <span class="year-badge">Marzo 2026</span>
         </div>
       </div>
     </div>
@@ -34,7 +33,7 @@
           
           <div class="logos">
             <img src="assets/icons/logo-manzoni.png" 
-                 alt="LM" 
+                 alt="Lico Manzoni" 
                  class="header-logo">
                  
             <img src="assets/icons/logo-erasmus.jpg" 
@@ -54,9 +53,14 @@
       </div> 
     </div> 
 
-    <nav class="it-navbar" aria-label="Menu principale">
+  <nav class="it-navbar" aria-label="Menu principale">
       <div class="container">
-        <ul class="nav-menu" role="tablist">
+
+        <button id="menu-toggle" class="menu-toggle-btn" aria-label="Apri menu di navigazione" aria-expanded="false">
+          <span class="hamburger-icon" aria-hidden="true">☰</span>
+        </button>
+
+        <ul id="nav-tabs" class="nav-menu" role="tablist">
           <li role="presentation">
             <button id="tab-home" class="nav-link active" role="tab" aria-selected="true" aria-controls="panel-home">
               HOME
@@ -83,6 +87,7 @@
             </button>
           </li>
         </ul>
+
       </div>
     </nav>
   </header>
@@ -160,7 +165,7 @@
           
           <div class="map-section-wrapper">
             <h3>Mappa interattiva dei partner 2025/26</h3>
-            <div id="map" style="height: 450px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
+            <div id="map" style="height: 550px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"></div>
           </div>
         </div>
       </section>
