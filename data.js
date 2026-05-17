@@ -56,14 +56,14 @@ const ERASMUS_DATA = {
     titolo: "Didattica & Metodologia",
     introduzione: "Il sistema scolastico finlandese si concentra sul benessere dell'individuo, sulla fiducia istituzionale e sull'autonomia pedagogica. Durante l'attività sul campo presso il Leppävaaran lukio, abbiamo osservato da vicino come l'apprendimento basato sui fenomeni (Phenomenon-based learning) venga integrato quotidianamente.",
     keyPoints: [
-      "Phenomenon-Based Learning (Apprendimento transdisciplinare basato su problemi reali e co-progettazione STEM).",
+      "Phenomenon-Based Learning (apprendimento transdisciplinare basato su problemi reali e co-progettazione STEM).",
       "Flessibilità oraria strutturata e personalizzazione profonda del piano di studi (curriculum non vincolato alla classe).",
-      "Student-Centered Assessment: valutazione prevalentemente formativa, mirata all'auto-consapevolezza e priva di ansia da prestazione.",
-      "Integrazione del benessere psicofisico: ritmi di apprendimento distesi con pause attive di 15 minuti ogni 45 di lezione in ambienti modulari e integrati."
+      "Student-centered assessment: valutazione prevalentemente formativa, mirata all'auto-consapevolezza e priva di ansia da prestazione.",
+      "Integrazione del benessere psicofisico: ritmi di apprendimento distesi lezioni da 75' e pause attive di 15 minuti in ambienti modulari e integrati."
     ],
     modelliConfronto: {
-      titolo: "Modelli a Confronto",
-      descrizione: "Cliccando sui link sottostanti è possibile consultare i documenti programmatici ufficiali che regolano la didattica in Finlandia e la Indicazioni nazionali dei quattro indirizzi del Liceo Manzoni.",
+      titolo: "Modelli a confronto",
+      descrizione: "Cliccando sui link sottostanti è possibile consultare i documenti programmatici ufficiali che regolano la didattica in Finlandia (<i>core curriculum</i>) e le Indicazioni Nazionali dei quattro indirizzi del Liceo Manzoni.",
       finlandia: {
         nome: "National core curriculum - Finlandia (inglese)",
         url: ASSETS_REGISTRY.documents.curriculumFinlandia
