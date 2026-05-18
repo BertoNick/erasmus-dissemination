@@ -128,7 +128,7 @@ function initDataInjection() {
   }
 
   // ==========================================
-  // MENU 3: DIARIO DI BORDO (Generazione Card & Caroselli)
+  // MENU 3: DIARIO DI BORDO (Generazione Card & Caroselli con Tabella Trasparente)
   // ==========================================
   const diarioContainer = document.getElementById("diario-cards-container");
   if (diarioContainer) {
@@ -140,7 +140,6 @@ function initDataInjection() {
           if (item.immagini.length === 1) {
             mediaHtml = `<img src="${item.immagini[0]}" alt="${item.titolo}" class="diario-img">`;
           } else {
-            // Struttura dinamica del carosello d'immagini multiplo
             mediaHtml = `
               <div class="diario-carousel" data-current="0">
                 <div class="carousel-track">
@@ -158,6 +157,40 @@ function initDataInjection() {
           }
         }
 
+        // --- ALGORITMO DI PARSING PER LA TABELLA TRASPARENTE ---
+        // Spezza il testo per ogni blocco di attività (separato da <br> o <br><br>)
+        const blocchiAttivita = item.testoCompleto.split(/<br\s*\/?>/i).filter(b => b.trim() !== "");
+        
+        let tabellaTrasparenteHtml = `<div class="diario-timetable">`;
+        
+        blocchiAttivita.forEach(blocco => {
+          // Cerca il pattern del tag strong iniziale, es: <strong>09:45 - INGLESE (...):</strong>
+          const match = blocco.match(/<strong>(.*?)<\/strong>:(.*)/i);
+          
+          if (match && match.length >= 3) {
+            const intestazione = match[1].trim(); // Es: "09:45 - INGLESE (Grammatica...)"
+            const descrizione = match[2].trim();  // Tutto il testo successivo
+            
+            tabellaTrasparenteHtml += `
+              <div class="timetable-row">
+                <div class="timetable-header-cell">${intestazione}</div>
+                <div class="timetable-body-cell">${descrizione}</div>
+              </div>
+            `;
+          } else {
+            // Caso di fallback se il blocco non rispetta lo standard strong
+            tabellaTrasparenteHtml += `
+              <div class="timetable-row">
+                <div class="timetable-header-cell">Info</div>
+                <div class="timetable-body-cell">${blocco}</div>
+              </div>
+            `;
+          }
+        });
+        
+        tabellaTrasparenteHtml += `</div>`;
+        // --------------------------------------------------------
+
         return `
           <article class="diario-card" id="card-${item.id}">
             <div class="diario-card-header">
@@ -167,7 +200,9 @@ function initDataInjection() {
             <div class="diario-card-body">
               <p class="diario-anteprima">${item.anteprima}</p>
               <div class="diario-content-expanded" hidden>
-                <p class="narrative-text">${item.testoCompleto}</p>
+                
+                ${tabellaTrasparenteHtml}
+                
                 ${mediaHtml}
               </div>
               <button class="btn-toggle-diario" aria-expanded="false" aria-controls="expanded-${item.id}">

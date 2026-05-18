@@ -988,3 +988,70 @@ main {
     width: auto;  /* Impedisce qualsiasi deformazione dell'aspect ratio */
   }
 }
+
+/* ==========================================================================
+   STRUTTURA ORARI DIARIO DI BORDO (FINTA TABELLA TRASPARENTE)
+   ========================================================================== */
+
+.diario-timetable {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* Spazio di respiro tra una riga di attività e l'altra */
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.timetable-row {
+  display: grid;
+  grid-template-columns: 280px 1fr; /* Colonna orario fissa, colonna testo fluida */
+  gap: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+/* Effetto zebrato leggerissimo sui pannelli trasparenti per aiutare l'occhio */
+.timetable-row:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02); 
+}
+
+/* Colonna sinistra: Orario e Materia */
+.timetable-header-cell {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
+  color: #002654; /* Colore istituzionale scuro */
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-right: 3px solid rgba(0, 38, 84, 0.15); /* Sottile linea di divisione verticale trasparente */
+  padding-right: 0.75rem;
+}
+
+/* Colonna destra: Resoconto didattico */
+.timetable-body-cell {
+  font-family: 'Lora', Georgia, serif; /* Font ad alta leggibilità narrativa */
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333333;
+}
+
+/* ==========================================================================
+   RESPONSIVITÀ PER DISPOSITIVI MOBILE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .timetable-row {
+    grid-template-columns: 1fr; /* Su smartphone la tabella collassa e torna verticale per non stringere il testo */
+    gap: 0.25rem;
+    padding: 0.5rem 0;
+    background-color: transparent !important;
+  }
+  
+  .timetable-header-cell {
+    border-right: none;
+    border-bottom: 2px solid rgba(0, 38, 84, 0.1);
+    padding-right: 0;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+}
