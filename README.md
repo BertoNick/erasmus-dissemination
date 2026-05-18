@@ -41,7 +41,7 @@ The Erasmus+ project is co-funded by the European Union. The European Commission
 
 ---
 
-## 🛠️ Caratteristiche Tecniche / Technical Features
+## Caratteristiche Tecniche / Technical Features
 
 * **Architettura / Architecture:** Vanilla JavaScript (SPA) con separazione netta dei dati (`data.js`).
 * **Accessibilità / Accessibility:** Sviluppato seguendo le linee guida AGID, con contrasti cromatici a norma, uso corretto dei tag semantici e piena navigabilità da tastiera.
