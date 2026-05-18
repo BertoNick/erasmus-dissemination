@@ -157,15 +157,18 @@ function initDataInjection() {
           }
         }
 
-        // --- ALGORITMO DI PARSING PER LA TABELLA TRASPARENTE ---
-        // Spezza il testo per ogni blocco di attività (separato da <br> o <br><br>)
-        const blocchiAttivita = item.testoCompleto.split(/<br\s*\/?>/i).filter(b => b.trim() !== "");
+        // --- ALGORITMO DI PARSING PER LA TABELLA TRASPARENTE (CORRETTO) ---
+        // Dividiamo il testo SOLO quando trova il doppio a capo <br><br>, ovvero il vero separatore tra le materie
+        const blocchiAttivita = item.testoCompleto.split(/<br\s*\/?>\s*<br\s*\/?>/i).filter(b => b.trim() !== "");
         
         let tabellaTrasparenteHtml = `<div class="diario-timetable">`;
         
         blocchiAttivita.forEach(blocco => {
+          // Puliamo eventuali residui di singoli <br> rimasti all'inizio o alla fine del blocco
+          const bloccoPulito = blocco.trim().replace(/^(<br\s*\/?>)+|(<br\s*\/?>)+$/gi, "").trim();
+          
           // Cerca il pattern del tag strong iniziale, es: <strong>09:45 - INGLESE (...):</strong>
-          const match = blocco.match(/<strong>(.*?)<\/strong>:(.*)/i);
+          const match = bloccoPulito.match(/<strong>(.*?)<\/strong>:(.*)/i);
           
           if (match && match.length >= 3) {
             const intestazione = match[1].trim(); // Es: "09:45 - INGLESE (Grammatica...)"
@@ -181,8 +184,8 @@ function initDataInjection() {
             // Caso di fallback se il blocco non rispetta lo standard strong
             tabellaTrasparenteHtml += `
               <div class="timetable-row">
-                <div class="timetable-header-cell">Info</div>
-                <div class="timetable-body-cell">${blocco}</div>
+                <div class="timetable-header-cell">Attività</div>
+                <div class="timetable-body-cell">${bloccoPulito}</div>
               </div>
             `;
           }
