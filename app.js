@@ -128,7 +128,7 @@ function initDataInjection() {
   }
 
   // ==========================================
-  // MENU 3: DIARIO DI BORDO (Generazione Card & Caroselli con Tabella Trasparente)
+  // MENU 3: DIARIO DI BORDO (SISTEMATO)
   // ==========================================
   const diarioContainer = document.getElementById("diario-cards-container");
   if (diarioContainer) {
@@ -157,42 +157,16 @@ function initDataInjection() {
           }
         }
 
-        // --- ALGORITMO DI PARSING PER LA TABELLA TRASPARENTE (CORRETTO) ---
-        // Dividiamo il testo SOLO quando trova il doppio a capo <br><br>, ovvero il vero separatore tra le materie
-        const blocchiAttivita = item.testoCompleto.split(/<br\s*\/?>\s*<br\s*\/?>/i).filter(b => b.trim() !== "");
-        
         let tabellaTrasparenteHtml = `<div class="diario-timetable">`;
-        
-        blocchiAttivita.forEach(blocco => {
-          // Puliamo eventuali residui di singoli <br> rimasti all'inizio o alla fine del blocco
-          const bloccoPulito = blocco.trim().replace(/^(<br\s*\/?>)+|(<br\s*\/?>)+$/gi, "").trim();
-          
-          // Cerca il pattern del tag strong iniziale, es: <strong>09:45 - INGLESE (...):</strong>
-          const match = bloccoPulito.match(/<strong>(.*?)<\/strong>:(.*)/i);
-          
-          if (match && match.length >= 3) {
-            const intestazione = match[1].trim(); // Es: "09:45 - INGLESE (Grammatica...)"
-            const descrizione = match[2].trim();  // Tutto il testo successivo
-            
-            tabellaTrasparenteHtml += `
-              <div class="timetable-row">
-                <div class="timetable-header-cell">${intestazione}</div>
-                <div class="timetable-body-cell">${descrizione}</div>
-              </div>
-            `;
-          } else {
-            // Caso di fallback se il blocco non rispetta lo standard strong
-            tabellaTrasparenteHtml += `
-              <div class="timetable-row">
-                <div class="timetable-header-cell">Attività</div>
-                <div class="timetable-body-cell">${bloccoPulito}</div>
-              </div>
-            `;
-          }
-        });
-        
+        if (item.programma && item.programma.length > 0) {
+          tabellaTrasparenteHtml += item.programma.map(riga => `
+            <div class="timetable-row">
+              <div class="timetable-header-cell">${riga.info}</div>
+              <div class="timetable-body-cell">${riga.dettagli}</div>
+            </div>
+          `).join("");
+        }
         tabellaTrasparenteHtml += `</div>`;
-        // --------------------------------------------------------
 
         return `
           <article class="diario-card" id="card-${item.id}">
@@ -202,14 +176,12 @@ function initDataInjection() {
             </div>
             <div class="diario-card-body">
               <p class="diario-anteprima">${item.anteprima}</p>
-              <div class="diario-content-expanded" hidden>
-                
+              <div id="expanded-${item.id}" class="diario-content-expanded" hidden>
                 ${tabellaTrasparenteHtml}
-                
                 ${mediaHtml}
               </div>
               <button class="btn-toggle-diario" aria-expanded="false" aria-controls="expanded-${item.id}">
-                Leggi tutto <span class="sr-only">il resoconto del ${item.giorno}</span>
+                <span class="btn-text">Leggi tutto</span> <span class="sr-only">il resoconto del ${item.giorno}</span>
               </button>
             </div>
           </article>
@@ -299,37 +271,25 @@ function initDataInjection() {
   // ==========================================
   // AZIONI POST-INIEZIONE (Caroselli e KaTeX)
   // ==========================================
-  
-  // 1. Attiva l'ascolto dei click su tutti i caroselli generati (Didattica + Diario)
   initCarouselListeners();
 
-  // 2. Forza la conversione dei simboli LaTeX in formule matematiche/chimiche
+  // Scansione formule estesa a tutto il main per sicurezza
   if (typeof renderMathInElement !== 'undefined') {
-    const configurazioneKatex = {
-      delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "$", right: "$", display: false}
-      ],
-      throwOnError: false
-    };
-
-    // Scansiona il contenitore del diario
-    if (diarioContainer) {
-      renderMathInElement(diarioContainer, configurazioneKatex);
-    }
-    // Scansiona il contenitore della didattica (in caso di formule presenti nelle introduzioni o didascalie)
-    if (didatticaMediaContainer) {
-      renderMathInElement(didatticaMediaContainer, configurazioneKatex);
-    }
-    const didatticaIntroEl = document.getElementById("didattica-intro");
-    if (didatticaIntroEl) {
-      renderMathInElement(didatticaIntroEl, configurazioneKatex);
+    const mainEl = document.getElementById("main-content");
+    if (mainEl) {
+      renderMathInElement(mainEl, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+      });
     }
   }
 }
 
 /**
- * Gestisce lo scorrimento delle immagini nei caroselli del Diario di Bordo e della Didattica
+ * Gestisce lo scorrimento delle immagini nei caroselli
  */
 function initCarouselListeners() {
   document.querySelectorAll('.diario-carousel').forEach(carousel => {
@@ -398,7 +358,6 @@ function initTabNavigation() {
         targetPanel.classList.add("active");
       }
 
-      // Ricalcola le dimensioni geometriche di Leaflet se si passa alla mappa dei partenariati
       if (targetPanelId === "panel-partenariati" && typeof L !== 'undefined') {
         if (!mappaLeaflet) {
           initMappaInterattiva(ERASMUS_DATA.partenariati.scuole);
@@ -430,7 +389,7 @@ function initTabNavigation() {
 }
 
 /**
- * Gestisce l'espansione e la compressione delle card del Diario di Bordo
+ * Gestisce l'espansione e la compressione delle card del Diario di Bordo (CORRETTA)
  */
 function initDiarioExpandableCards() {
   const container = document.getElementById("diario-cards-container");
@@ -442,22 +401,23 @@ function initDiarioExpandableCards() {
 
     const body = btn.closest(".diario-card-body");
     const expandedContent = body.querySelector(".diario-content-expanded");
+    const btnText = btn.querySelector(".btn-text");
     const isExpanded = btn.getAttribute("aria-expanded") === "true";
 
     if (isExpanded) {
       btn.setAttribute("aria-expanded", "false");
-      btn.innerHTML = `Leggi tutto <span class="sr-only">${btn.querySelector('.sr-only').innerHTML}</span>`;
+      if (btnText) btnText.textContent = "Leggi tutto";
       expandedContent.setAttribute("hidden", "true");
     } else {
       btn.setAttribute("aria-expanded", "true");
-      btn.innerHTML = `Chiudi <span class="sr-only">${btn.querySelector('.sr-only').innerHTML}</span>`;
+      if (btnText) btnText.textContent = "Chiudi";
       expandedContent.removeAttribute("hidden");
     }
   });
 }
 
 /**
- * Gestisce l'apertura e chiusura in stile Accordion dei blocchi della Timeline dell'Iter Amministrativo.
+ * Gestisce l'apertura e chiusura in stile Accordion dei blocchi dell'Iter Amministrativo.
  */
 function initIterAccordion() {
   const container = document.getElementById("iter-timeline-container");
@@ -483,15 +443,13 @@ function initIterAccordion() {
 }
 
 /**
- * Genera e istanzia la mappa interattiva europea usando i LOGHI delle scuole come marker puntuali puliti
+ * Genera e istanzia la mappa interattiva europea
  */
 function initMappaInterattiva(scuole) {
   if (!document.getElementById('map')) return;
 
-  // Istanzia la mappa centrata sull'Europa centro-settentrionale
   mappaLeaflet = L.map('map').setView([54.0, 14.0], 4);
 
-  // Carica i tasselli stradali OpenStreetMap standard
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: '© OpenStreetMap contributors'
@@ -500,7 +458,6 @@ function initMappaInterattiva(scuole) {
   scuole.forEach(scuola => {
     if (scuola.coordinate && scuola.coordinate.lat && scuola.coordinate.lng) {
       
-      // Iniezione di nodi divIcon personalizzati per mantenere le proporzioni native ed evitare distorsioni
       const logoIcon = L.divIcon({
         html: `<div style="background-color: white; border: 2px solid #002654; border-radius: 6px; height: 50px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3); padding: 4px; box-sizing: border-box;">
                  <img src="${scuola.logo}" alt="Logo ${scuola.nome}" style="height: 100%; width: auto; object-fit: contain; display: block;">
@@ -511,7 +468,6 @@ function initMappaInterattiva(scuole) {
         popupAnchor: [0, -25]
       });
 
-      // Configurazione pulita delle coordinate numeriche estratte
       const marker = L.marker([scuola.coordinate.lat, scuola.coordinate.lng], { icon: logoIcon }).addTo(mappaLeaflet);
       
       const popupContent = `
@@ -541,13 +497,11 @@ function initMobileMenu() {
 
   if (!menuToggle || !navTabs) return;
 
-  // 1. Click sul pulsante Hamburger: attiva/disattiva la classe .open
   menuToggle.addEventListener("click", (e) => {
     e.stopPropagation();
     menuToggleAction(navTabs, menuToggle);
   });
 
-  // 2. Chiusura automatica a selezione avvenuta
   const tabs = navTabs.querySelectorAll('[role="tab"]');
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
@@ -559,7 +513,6 @@ function initMobileMenu() {
     });
   });
 
-  // 3. Chiusura resiliente se l'utente clicca un'area esterna della pagina
   document.addEventListener("click", (e) => {
     if (!navTabs.contains(e.target) && !menuToggle.contains(e.target)) {
       if (navTabs.classList.contains("open")) {
