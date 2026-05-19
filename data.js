@@ -56,9 +56,9 @@ const ERASMUS_DATA = {
     titolo: "Didattica & Metodologia",
     introduzione: "Il sistema scolastico finlandese si concentra sul benessere dell'individuo, sulla fiducia istituzionale e sull'autonomia pedagogica. Durante l'attività sul campo presso il Leppävaaran lukio, abbiamo osservato da vicino come l'apprendimento basato sui fenomeni (Phenomenon-based learning) venga integrato quotidianamente.",
     keyPoints: [
-      "Phenomenon-Based Learning (apprendimento transdisciplinare basato su problemi reali e co-progettazione STEM).",
-      "Flessibilità oraria strutturata e personalizzazione profonda del piano di studi (curriculum non vincolato alla classe).",
-      "Student-centered assessment: valutazione prevalentemente formativa, mirata all'auto-consapevolezza e priva di ansia da prestazione.",
+      "Phenomenon-Based Learning (apprendimento transdisciplinare basato su problemi reali).",
+      "Flessibilità oraria strutturata e personalizzazione profonda del piano di studi (curriculum non vincolato alla classe - scelta di apprfondimento nelle singole discipline regolata dall'unico vincolo del numero di crediti finali da raggiungere).",
+      "Student-centered assessment: valutazione prevalentemente formativa, con esami di fine modulo concentrati dopo 5-6 settimane di lezioni.",
       "Integrazione del benessere psicofisico: ritmi di apprendimento distesi lezioni da 75' e pause attive di 15 minuti in ambienti modulari e integrati."
     ],
     modelliConfronto: {
