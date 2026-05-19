@@ -88,7 +88,7 @@ const ERASMUS_DATA = {
         { info: "10:55 - VOLO DI ANDATA", dettagli: "Partenza da <strong>Milano Malpensa (MXP)</strong> con arrivo all'aeroporto di <strong>Helsinki-Vantaa (HEL)</strong> alle ore 15:00." },
         { info: "16:30 - TRASFERIMENTO", dettagli: "Trasferimento dall'aeroporto verso la struttura alberghiera per il <strong>check-in</strong> e la sistemazione." }
       ],
-      immagini: []
+      immagini: ["assets/img/hel.jpeg", "assets/img/hel-1.jpeg","assets/img/hel-3.jpeg"]
     },
     {
       id: "day2",
@@ -101,12 +101,12 @@ const ERASMUS_DATA = {
         { info: "13:15 - FISICA (Forza elastica)", dettagli: "Focus sulla <em>Jousivoima</em> (<strong>forza elastica</strong>) e accenni al <strong>moto armonico</strong>." },
         { info: "16:30 - ATTIVITÀ CULTURALI", dettagli: "Visita del centro storico di Helsinki: zona del porto, mercato storico <strong>Vanha kauppahalli</strong>, Cattedrale luterana e Piazza del Senato." }
       ],
-      immagini: ["assets/img/musica.jpg"]
+      immagini: ["assets/img/musica.jpeg", "assets/img/orario-scuola-espoo.jpg", "assets/img/aula.jpeg"]
     },
     {
       id: "day3",
       giorno: "03/03/2026",
-      titolo: "Inclusione (<i>Special Needs</i>) e tradizione della sauna",
+      titolo: "Inclusione (<i>special needs</i>) e tradizione della sauna",
       anteprima: "Focus sul modello finlandese di supporto per bisogni speciali (Wilma) e chimica quantitativa.",
       programma: [
         { info: "09:45 - CHIMICA", dettagli: "Spiegazione delle formule per il calcolo del numero di moli $n = \\frac{m}{M}$ e della <strong>concentrazione molare</strong> $C = \\frac{n}{V}$." },
@@ -114,7 +114,7 @@ const ERASMUS_DATA = {
         { info: "13:15 - MATEMATICA BASE", dettagli: "Esercizi sulle conversioni di unità di misura e proprietà geometriche dei poligoni." },
         { info: "16:00 - ATTIVITÀ CULTURALI", dettagli: "Esperienza della tradizionale <strong>sauna finlandese</strong>: sessioni a <strong>180°C - 190°C</strong> alternate a immersioni di 2 minuti nelle acque gelide del <strong>Mar Baltico (1°C)</strong>." }
       ],
-      immagini: ["assets/img/aula-chimica.jpg", "assets/img/sauna.jpg"]
+      immagini: ["assets/img/aula-chimica.jpg", "assets/img/sauna.jpeg", "assets/img/aula-arte.jpeg", "assets/img/scacchi-chill.jpeg"]
     },
     {
       id: "day4",
@@ -128,7 +128,14 @@ const ERASMUS_DATA = {
         { info: "15:30 - ATTIVITÀ CULTURALI", dettagli: "Visita alla fortezza <strong>patrimonio UNESCO</strong> di <strong>Suomenlinna</strong>, raggiunta tramite battello solcando i ghiacci del Baltico." },
         { info: "19:30 - CENA ISTITUZIONALE", dettagli: "Incontro ufficiale presso il ristorante Kappeli con il <strong>Dirigente scolastico ospitante</strong> e una rappresentanza di docenti belgi, per attività di <strong>networking internazionale</strong>." }
       ],
-      immagini: ["assets/img/kameleonten-1.jpg", "assets/img/kameleonten-2.jpg", "assets/img/kameleonten-3.jpg", "assets/img/suomenlinna.jpg", "assets/img/kappeli.jpg"]
+      immagini: ["assets/img/kameleonten.jpeg",
+      "assets/img/kameleonten-ginnastica.jpeg",
+      "assets/img/kameleonten-basket.jpeg",
+      "assets/img/kameleonten-hockey.jpeg",
+      "assets/img/suomenlinna.jpeg",
+      "assets/img/suomenlinna-1.jpeg",
+      "assets/img/kappeli.jpeg",
+      "assets/img/kappeli-1.jpeg"]
     },
     {
       id: "day5",
@@ -141,7 +148,13 @@ const ERASMUS_DATA = {
         { info: "11:45 - SCIENZE DELLA SALUTE", dettagli: "Analisi del sistema strutturato in 21 regioni socio-sanitarie. Studio statistico e dei grafici eseguito in piedi come <strong>'pausa attiva'</strong> per stimolare la concentrazione." },
         { info: "16:30 - ATTIVITÀ CULTURALI", dettagli: "Passeggiata al Monumento a Sibelius, sosta al Café Regatta e visita della <strong>Biblioteca Centrale Oodi</strong>." }
       ],
-      immagini: ["assets/img/sibelius.jpg", "assets/img/regatta.jpg", "assets/img/biblioteca.jpg"]
+      immagini: ["assets/img/aula-esame.jpeg",
+      "assets/img/sibelius.jpeg",
+      "assets/img/regatta.jpeg",
+      "assets/img/regatta-1.jpeg",
+      "assets/img/oodi.jpeg",
+      "assets/img/oodi-1.jpeg",
+      "assets/img/oodi-2.jpeg"]
     },
     {
       id: "day6",
@@ -153,7 +166,9 @@ const ERASMUS_DATA = {
         { info: "11:45 - MUSICA & IA", dettagli: "Composizione del brano del centenario utilizzando l'<strong>Intelligenza Artificiale</strong> per generare la base, seguita da <strong>riarrangiamento melodico autonomo</strong>." },
         { info: "13:15 - EVENTI CULTURALI", dettagli: "<strong>Showcase multiculturale</strong> interamente guidato e gestito dagli studenti nell'Edificio 5 (performance coreane, cinesi, filippine e quiz su <strong>Kahoot</strong>)." }
       ],
-      immagini: ["assets/img/cultural-event.jpg"]
+      immagini: ["assets/img/evento-culturale.jpeg",
+      "assets/img/cultural-events-1.jpeg",
+      "assets/img/biliardo-studenti.jpeg"]
     },
     {
       id: "day7",
@@ -165,7 +180,7 @@ const ERASMUS_DATA = {
         { info: "12:00 - KAMPPI", dettagli: "Visita architettonico-antropologica alla celebre <strong>Cappella del Silenzio</strong>." },
         { info: "16:05 - VOLO DI RIENTRO", dettagli: "Partenza da <strong>Helsinki-Vantaa (HEL)</strong> e arrivo a <strong>Milano Malpensa (MXP)</strong>, concludendo la mobilità." }
       ],
-      immagini: []
+      immagini: ["assets/img/zoo.jpeg"]
     }
   ],
   
