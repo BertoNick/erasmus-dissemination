@@ -114,7 +114,7 @@ const ERASMUS_DATA = {
         { info: "13:15 - MATEMATICA BASE", dettagli: "Esercizi sulle conversioni di unità di misura e proprietà geometriche dei poligoni." },
         { info: "16:00 - ATTIVITÀ CULTURALI", dettagli: "Esperienza della tradizionale <strong>sauna finlandese</strong>: sessioni a <strong>180°C - 190°C</strong> alternate a immersioni di 2 minuti nelle acque gelide del <strong>Mar Baltico (1°C)</strong>." }
       ],
-      immagini: ["assets/img/aula-chimica.jpg", "assets/img/sauna.jpeg", "assets/img/aula-arte.jpeg", "assets/img/scacchi-chill.jpeg"]
+      immagini: ["assets/img/aula-chimica.jpeg", "assets/img/sauna.jpeg", "assets/img/aula-arte.jpeg", "assets/img/scacchi-chill.jpeg"]
     },
     {
       id: "day4",
