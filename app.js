@@ -448,7 +448,7 @@ function initIterAccordion() {
 function initMappaInterattiva(scuole) {
   if (!document.getElementById('map')) return;
 
-  mappaLeaflet = L.map('map').setView([54.0, 14.0], 4);
+  mappaLeaflet = L.map('map').setView([50.0, 14.0], 4);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
