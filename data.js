@@ -114,7 +114,7 @@ const ERASMUS_DATA = {
         { info: "13:15 - MATEMATICA BASE", dettagli: "Esercizi sulle conversioni di unità di misura e proprietà geometriche dei poligoni." },
         { info: "16:00 - ATTIVITÀ CULTURALI", dettagli: "Esperienza della tradizionale <strong>sauna finlandese</strong>: sessioni a <strong>180°C - 190°C</strong> alternate a immersioni di 2 minuti nelle acque gelide del <strong>Mar Baltico (1°C)</strong>." }
       ],
-      immagini: ["assets/img/aula-chimica.jpeg", "assets/img/sauna.jpeg", "assets/img/aula-arte.jpeg", "assets/img/scacchi-chill.jpeg"]
+      immagini: ["assets/img/aula-arte.jpeg", "assets/img/aula-chimica.jpeg", "assets/img/sauna.jpeg", "assets/img/scacchi-chill.jpeg"]
     },
     {
       id: "day4",
@@ -128,7 +128,8 @@ const ERASMUS_DATA = {
         { info: "15:30 - ATTIVITÀ CULTURALI", dettagli: "Visita alla fortezza <strong>patrimonio UNESCO</strong> di <strong>Suomenlinna</strong>, raggiunta tramite battello solcando i ghiacci del Baltico." },
         { info: "19:30 - CENA ISTITUZIONALE", dettagli: "Incontro ufficiale presso il ristorante Kappeli con il <strong>Dirigente scolastico ospitante</strong> e una rappresentanza di docenti belgi, per attività di <strong>networking internazionale</strong>." }
       ],
-      immagini: ["assets/img/kameleonten.jpeg",
+      immagini: ["assets/img/aula-chimica.jpeg",
+      "assets/img/kameleonten.jpeg",
       "assets/img/kameleonten-ginnastica.jpeg",
       "assets/img/kameleonten-basket.jpeg",
       "assets/img/kameleonten-hockey.jpeg",
