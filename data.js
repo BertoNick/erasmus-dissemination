@@ -17,7 +17,7 @@ const ASSETS_REGISTRY = {
     monaco: "assets/icons/logo-monaco.jpg"
   },
   images: {
-    immaginiDidattica: ["assets/img/grafico-didattica.jpg"] 
+    immaginiDidattica: ["assets/img/scuola-ingresso.jpg", "assets/img/spazi.jpeg", "assets/img/aula.jpeg", "assets/img/orario-scuola-espoo.jpg"] 
   },
   documents: {
     // Didattica
