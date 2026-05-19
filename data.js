@@ -94,12 +94,12 @@ const ERASMUS_DATA = {
       id: "day2",
       giorno: "02/03/2026",
       titolo: "Didattica digitale, danze tipiche e centro storico",
-      anteprima: "Primo impatto con l'insegnamento senza libri cartacei, i laboratori di musica folk e la fisica del moto armonico.",
+      anteprima: "Primo impatto con l'insegnamento senza libri cartacei, i laboratori di musica folk e la fisica della forza elastica.",
       programma: [
         { info: "09:45 - INGLESE (Grammatica)", dettagli: "Stile di insegnamento classico con un uso intenso della <strong>tecnologia</strong> (<strong>assenza di libri cartacei</strong>, uso esclusivo di laptop). Utilizzo di <strong>Google Classroom</strong> per l'assegnazione di compiti e attività. Gestione della disciplina flessibile mirata all'<strong>autonomia scolastica</strong> e alla responsabilizzazione dello studente." },
         { info: "11:45 - MUSICA (Cultura folk)", dettagli: "Focus sul <strong>ballo di gruppo folk</strong> in tempo 4/4 (passo Base, Crossing e Teardrop). Ascolto, analisi del <em>vibe</em> e degli <strong>strumenti tradizionali</strong> su brani moderni di Vilma Jää, Hohka e Värttinä." },
-        { info: "13:15 - FISICA (Forza elastica)", dettagli: "Focus sulla <em>Jousivoima</em> (<strong>forza elastica</strong>) e sul <strong>moto armonico</strong>." },
-        { info: "15:30 - ATTIVITÀ CULTURALI", dettagli: "Visita guidata del centro storico di Helsinki: zona del porto, mercato storico <strong>Vanha kauppahalli</strong>, Cattedrale luterana e Piazza del Senato." }
+        { info: "13:15 - FISICA (Forza elastica)", dettagli: "Focus sulla <em>Jousivoima</em> (<strong>forza elastica</strong>) e accenni al <strong>moto armonico</strong>." },
+        { info: "16:30 - ATTIVITÀ CULTURALI", dettagli: "Visita del centro storico di Helsinki: zona del porto, mercato storico <strong>Vanha kauppahalli</strong>, Cattedrale luterana e Piazza del Senato." }
       ],
       immagini: ["assets/img/musica.jpg"]
     },
@@ -110,7 +110,7 @@ const ERASMUS_DATA = {
       anteprima: "Focus sul modello finlandese di supporto per bisogni speciali (Wilma) e chimica quantitativa.",
       programma: [
         { info: "09:45 - CHIMICA", dettagli: "Spiegazione delle formule per il calcolo del numero di moli $n = \\frac{m}{M}$ e della <strong>concentrazione molare</strong> $C = \\frac{n}{V}$." },
-        { info: "10:30 - SPECIAL NEEDS TEACHER", dettagli: "Analisi del modello aggiornato ad <strong>agosto 2025</strong>. Il <strong>'Supporto Generale'</strong> prevede interventi terapeutici e workshop in <strong>piccoli gruppi (max 10 alunni)</strong>. Nella scuola secondaria (<em>Upper Secondary</em>) sono garantiti workshop di supporto e <strong>didattica speciale</strong>. Lo <strong>screening per la dislessia</strong> è obbligatorio per tutti. Il piano viene redatto <strong>coinvolgendo direttamente lo studente</strong> per definire misure come tempo aggiuntivo, mappe o affiancamento, tracciando tutto sulla piattaforma <strong>Wilma</strong>." },
+        { info: "10:30 - SPECIAL NEEDS TEACHER", dettagli: "Analisi del modello aggiornato ad <strong>agosto 2025</strong>. Il <strong>'Supporto Generale'</strong> prevede interventi terapeutici e workshop in <strong>piccoli gruppi (max 10 alunni)</strong>. Nella scuola secondaria (<em>Upper Secondary</em>) sono garantiti workshop di supporto e <strong>didattica speciale</strong>. Lo <strong>screening per la dislessia</strong> è obbligatorio per tutti e viene svolto direttamente a scuola, mentre la diagnosi di discalculia viene effettuata da un solo centro in tutta la Finaldia. per questo motivo i casi sono pochissimi e spesso prevedono la dispensazione dallo svolgimento dei corsi di matematica. Il piano viene redatto <strong>coinvolgendo direttamente lo studente</strong> per definire misure come tempo aggiuntivo, mappe o affiancamento, tracciando tutto sulla piattaforma <strong>Wilma</strong>." },
         { info: "13:15 - MATEMATICA BASE", dettagli: "Esercizi sulle conversioni di unità di misura e proprietà geometriche dei poligoni." },
         { info: "16:00 - ATTIVITÀ CULTURALI", dettagli: "Esperienza della tradizionale <strong>sauna finlandese</strong>: sessioni a <strong>180°C - 190°C</strong> alternate a immersioni di 2 minuti nelle acque gelide del <strong>Mar Baltico (1°C)</strong>." }
       ],
@@ -122,11 +122,11 @@ const ERASMUS_DATA = {
       titolo: "Laboratorio di chimica, strutture Kameleonten e Suomenlinna",
       anteprima: "Esperimenti di elettrolisi con fenolftaleina, curve di red shift in fisica e visita al centro sportivo Kameleonten.",
       programma: [
-        { info: "08:15 - CHIMICA LABORATORIO", dettagli: "Attività pratica (<em>Keratus</em>) con l'utilizzo di $\\text{Na}_2\\text{SO}_4$ e <strong>fenolftaleina</strong> (viraggio al rosa/magenta brillante quando il <strong>pH supera 8.2</strong> intorno al catodo). Relazione redatta direttamente in ambiente <strong>Wilma</strong>." },
+        { info: "08:15 - CHIMICA LABORATORIO", dettagli: "Esperimento (<em>koe</em>) sull'elettrolisi, con l'utilizzo di $\\text{Na}_2\\text{SO}_4$ e <strong>fenolftaleina</strong> (viraggio al rosa/magenta brillante quando il <strong>pH supera 8.2</strong> intorno al catodo). Relazione redatta direttamente in ambiente <strong>Wilma</strong>." },
         { info: "09:45 - FISICA", dettagli: "Lezione sul <strong>Big Bang</strong>, sulla sintesi dei nuclei pesanti e sull'<strong>espansione dell'universo (red shift)</strong>." },
         { info: "11:45 e 13:15 - ED. FISICA", dettagli: "Progettazione di un <strong>percorso di coordinazione</strong> e dinamiche di gruppo presso il centro sportivo Kameleonten. Criteri di valutazione ripartiti equamente in: <strong>1/3 competenze tecniche, 1/3 partecipazione, 1/3 interazione sociale</strong>." },
-        { info: "15:30 - ATTIVITÀ CULTURALI", dettagli: "Visita alla fortezza <strong>patrimonio UNESCO</strong> di <strong>Suomenlinna</strong> tramite battello tra i ghiacci." },
-        { info: "20:00 - CENA ISTITUZIONALE", dettagli: "Incontro ufficiale presso il ristorante Kappeli con il <strong>Dirigente scolastico ospitante</strong> per attività di <strong>networking internazionale</strong>." }
+        { info: "15:30 - ATTIVITÀ CULTURALI", dettagli: "Visita alla fortezza <strong>patrimonio UNESCO</strong> di <strong>Suomenlinna</strong>, raggiunta tramite battello solcando i ghiacci del Baltico." },
+        { info: "19:30 - CENA ISTITUZIONALE", dettagli: "Incontro ufficiale presso il ristorante Kappeli con il <strong>Dirigente scolastico ospitante</strong> e una rappresentanza di docenti belgi, per attività di <strong>networking internazionale</strong>." }
       ],
       immagini: ["assets/img/kameleonten-1.jpg", "assets/img/kameleonten-2.jpg", "assets/img/kameleonten-3.jpg", "assets/img/suomenlinna.jpg", "assets/img/kappeli.jpg"]
     },
@@ -139,7 +139,7 @@ const ERASMUS_DATA = {
         { info: "08:15 - TEST DI INGLESE", dettagli: "Esame di produzione scritta <strong>computer-based</strong> (Corso 6) basato su griglie derivate dal <strong>matriculation exam</strong> (esame di maturità). Soglia di sufficienza al <strong>50%</strong>. L'ottimo livello linguistico è favorito dall'<strong>assenza di doppiaggio</strong> nei media." },
         { info: "09:45 - MATEMATICA AVANZATA", dettagli: "Analisi dei criteri del Corso 4 (<strong>30% compiti in classe, 20% test intermedi, 50% esame finale</strong>). Studio dei vettori tramite <strong>GeoGebra</strong> con le funzioni $f(x) = x$ e $g(x) = |x|$." },
         { info: "11:45 - SCIENZE DELLA SALUTE", dettagli: "Analisi del sistema strutturato in 21 regioni socio-sanitarie. Studio statistico e dei grafici eseguito in piedi come <strong>'pausa attiva'</strong> per stimolare la concentrazione." },
-        { info: "16:30 - ATTIVITÀ CULTURALI", dettagli: "Itinerario al Monumento a Sibelius, sosta al Café Regatta e studio dei servizi sociali e strutturali della <strong>Biblioteca Centrale Oodi</strong>." }
+        { info: "16:30 - ATTIVITÀ CULTURALI", dettagli: "Passeggiata al Monumento a Sibelius, sosta al Café Regatta e visita della <strong>Biblioteca Centrale Oodi</strong>." }
       ],
       immagini: ["assets/img/sibelius.jpg", "assets/img/regatta.jpg", "assets/img/biblioteca.jpg"]
     },
@@ -147,9 +147,9 @@ const ERASMUS_DATA = {
       id: "day6",
       giorno: "06/03/2026",
       titolo: "Matematica finanziaria, IA applicata e festival culturale",
-      anteprima: "Compiti di realtà finanziari, composizione musicale assistita da IA e festival multiculturale.",
+      anteprima: "Compiti di realtà matematico-finanziari, composizione musicale assistita da IA e festival multiculturale.",
       programma: [
-        { info: "08:15 - MATEMATICA BASE", dettagli: "Approccio orientato ai <strong>compiti di realtà</strong> económicos: simulazione di un conto con deposito mensile di €200, <strong>tasso di interesse dell'1.5%</strong> e applicazione della <strong>ritenuta fiscale del 30%</strong>." },
+        { info: "08:15 - MATEMATICA BASE", dettagli: "Approccio orientato ai <strong>compiti di realtà</strong> matematico-finanziari: simulazione (anche mediante l'uso di fogli di calcolo) di un conto con deposito mensile di €200, <strong>tasso di interesse dell'1.5%</strong> e applicazione della <strong>ritenuta fiscale del 30%</strong>." },
         { info: "11:45 - MUSICA & IA", dettagli: "Composizione del brano del centenario utilizzando l'<strong>Intelligenza Artificiale</strong> per generare la base, seguita da <strong>riarrangiamento melodico autonomo</strong>." },
         { info: "13:15 - EVENTI CULTURALI", dettagli: "<strong>Showcase multiculturale</strong> interamente guidato e gestito dagli studenti nell'Edificio 5 (performance coreane, cinesi, filippine e quiz su <strong>Kahoot</strong>)." }
       ],
@@ -159,7 +159,7 @@ const ERASMUS_DATA = {
       id: "day7",
       giorno: "07/03/2026",
       titolo: "Saluto alla città e viaggio di rientro",
-      anteprima: "Studio dei mercati coperti tradizionali, architettura del silenzio a Kamppi e volo per Milano Malpensa.",
+      anteprima: "Visita dei mercati coperti tradizionali, architettura del silenzio a Kamppi e volo per Milano Malpensa.",
       programma: [
         { info: "09:00 - HAKANIEMEN", dettagli: "Visita al mercato coperto tradizionale." },
         { info: "12:00 - KAMPPI", dettagli: "Visita architettonico-antropologica alla celebre <strong>Cappella del Silenzio</strong>." },
